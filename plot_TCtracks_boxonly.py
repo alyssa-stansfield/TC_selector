@@ -19,7 +19,6 @@ time = DS1.time.values
 
 nstorms = len(clons[:,0])
 ntimes = len(clons[0,:])
-print (nstorms, ntimes)
 
 
 #defining the circle polygon
@@ -33,7 +32,6 @@ circle_points = cartopy.geodesic.Geodesic().circle(lon=lon, lat=lat, radius=radi
 circle_array = np.asarray(circle_points)
 circle_lats = circle_array[:,1]
 circle_lons = circle_array[:,0]
-
 
 
 # Define the projection used to display the circle:
@@ -60,9 +58,8 @@ for m in storms:
     track_lons = clons[m,:]
     lats_nonans = track_lats[~np.isnan(track_lats)]
     lons_nonans = track_lons[~np.isnan(track_lons)]
-    plt.plot(lons_nonans,lats_nonans,linestyle='--',linewidth=0.5,color="blue",transform=ccrs.PlateCarree(),)
+    #plt.plot(lons_nonans,lats_nonans,linestyle='--',linewidth=0.5,color="blue",transform=ccrs.PlateCarree(),)
 
 plt.title(str(int(radius_in_meters)/1000) + "km circle, n = " + str(len(storms)))
 fig.tight_layout()
 plt.savefig('200kmcircle_with_tracks.png')
-
